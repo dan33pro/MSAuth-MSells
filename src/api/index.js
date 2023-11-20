@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const swaggerUi = require('swagger-ui-express');
 
@@ -10,6 +11,7 @@ const errors = require('../tools/network/errors');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 // ROUTER
