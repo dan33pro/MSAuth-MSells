@@ -1720,8 +1720,7 @@
                       "numeroCelular": "3155689425",
                       "direccion": "Calle 14 #5-10, Madrid, Cundinamerca",
                       "id_ruta": 1
-                    },
-                    // ... (otros clientes)
+                    }
                   ]
                 }
               }
