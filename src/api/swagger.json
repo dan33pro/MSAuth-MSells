@@ -1,67 +1,1742 @@
 {
-  "openapi": "3.0.3",
+  "openapi": "3.0.0",
   "info": {
-    "title": "RedSocialNode",
-    "description": "Una red social en NodeJS",
-    "contact": {
-      "email": "tesisdajupc@gmail.com"
-    },
-    "version": "1.0.11"
+    "title": "Msells",
+    "version": "1.0.0",
+    "description": "Descripcion de peticiones API"
   },
-  "externalDocs": {
-    "description": "Repositorio de GitHub con documentación",
-    "url": "https://github.com/dan33pro/CursoDeNodeJSAuthMicroserviciosRedis/wiki/"
-  },
-  "servers": [
-    {
-      "url": "http://localhost:3000/api/"
-    }
-  ],
-  "tags": [
-    {
-      "name": "user",
-      "description": "Operaciones sobre el usuario"
-    }
-  ],
   "paths": {
-    "/user": {
+    "/api/user/": {
       "get": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Listar los usuarios",
-        "description": "Listar los usuarios de la app",
-        "operationId": "ListUser",
+        "summary": "Obtener todos los usuarios registrados en el sistema",
         "responses": {
-          "default": {
-            "description": "Lista de usuarios"
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "body": [
+                    {
+			                "id_usuario": 1,
+			                "nombres": "Daniel Santiago",
+			                "apellidos": "Cespedes Granados",
+			                "correo": "ducart@outlook.com",
+			                "codPais": 57,
+			                "numeroCelular": "3155679568",
+			                "id_rol": 1
+		                },
+		                {
+			                "id_usuario": 2,
+			                "nombres": "Daniel Santiago",
+			                "apellidos": "Cespedes Granados",
+			                "correo": "dan333pro@gmail.com",
+			                "codPais": 57,
+			                "numeroCelular": "3155679568",
+			                "id_rol": 2
+		                },
+		                {
+			                "id_usuario": 3,
+			                "nombres": "Daniel Santiago",
+			                "apellidos": "Cespedes Granados",
+			                "correo": "daniel-cespedes@upc.edu.co",
+			                "codPais": 57,
+			                "numeroCelular": "3155679568",
+			                "id_rol": 3
+		                },
+		                {
+			                "id_usuario": 6,
+			                "nombres": "Juan Jose",
+			                "apellidos": "Gomez Ruiz",
+			                "correo": "juan-jose@upc.edu.co",
+			                "codPais": 57,
+			                "numeroCelular": "3155679569",
+			                "id_rol": 2
+		                },
+		                {
+			                "id_usuario": 7,
+			                "nombres": "Juan d",
+			                "apellidos": "Gomez d",
+			                "correo": "juan-josed@upc.edu.co",
+			                "codPais": 57,
+			                "numeroCelular": "31556795649",
+			                "id_rol": 2
+		                },
+		                {
+			                "id_usuario": 9,
+			                "nombres": "Juan 1700545259028",
+			                "apellidos": "Gomez ds",
+			                "correo": "juan-josesd@upc.edu.co",
+			                "codPais": 57,
+			                "numeroCelular": "31556795149",
+			                "id_rol": 1
+		                  },
+		                  {
+			                "id_usuario": 10,
+			                "nombres": "Andres Felipe",
+			                "apellidos": "Avila Rojas",
+			                "correo": "atec0793@gmail.com",
+			                "codPais": 57,
+			                "numeroCelular": "3118296930",
+			                "id_rol": 1
+		                  },
+                      {
+                        "id_usuario": 12,
+                        "nombres": "Andres Felipea",
+                        "apellidos": "Avila Rojasa",
+                        "correo": "saga334@gmail.com",
+                        "codPais": 57,
+                        "numeroCelular": "3136205537",
+                        "id_rol": 3
+                      },
+                      {
+                        "id_usuario": 13,
+                        "nombres": "Daniela Gomez ",
+                        "apellidos": "Alvarado",
+                        "correo": "daniela334@gmail.com",
+                        "codPais": 57,
+                        "numeroCelular": "3214567891",
+                        "id_rol": 2
+                      },
+                      {
+                        "id_usuario": 14,
+                        "nombres": "Leopoldo Lopez ",
+                        "apellidos": "Ramirez",
+                        "correo": "leo-lopez@upc.edu.co",
+                        "codPais": 57,
+                        "numeroCelular": "31756795149",
+                        "id_rol": 2
+                      }
+                  ]
+                }
+              }
+            }
+          }, 
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuario no encontrado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
           }
         }
       },
       "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Crea un usario",
-        "description": "Crea un usuario en nuestra app.",
-        "operationId": "createUser",
+        "summary": "Crear un nuevo usuario",
         "requestBody": {
-          "description": "Created user object",
+          "description": "Datos del nuevo usuario",
+          "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
+              "example": {
+                "nombres": "Daniel Santiago d",
+                "apellidos": "Cespedes Granados gs",
+                "correo": "daniel45-cespedes@gmail.com",
+                "userPassword": "Password2003",
+                "codPais": 57,
+                "numeroCelular": "3155672568",
+                "id_rol": 2,
+                "accion": "insert"
               }
             }
           }
         },
         "responses": {
-          "default": {
-            "description": "Operación satisfactoria",
+          "201": {
+            "description": "Usuario creado exitosamente",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
+                "example": {
+                  "error": false,
+                  "status": 201,
+                  "body": {
+                    "fieldCount": 0,
+                    "affectedRows": 1,
+                    "insertId": 16,
+                    "info": "",
+                    "serverStatus": 2,
+                    "warningStatus": 0,
+                    "changedRows": 0
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 400,
+                  "message": "Error de solicitud"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Editar usuario",
+        "requestBody": {
+          "description": "Datos del usuario",
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "id_usuario": 18,
+                "nombres": "Daniel Santiago",
+                "apellidos": "Cespedes Granados",
+                "correo": "daniel-cespedes@upc.edu.co",
+                "userPassword": "Password2003",
+                "codPais": 57,
+                "numeroCelular": "3155679568",
+                "id_rol": 3,
+                "accion": "update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuario editado exitosamente"
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuario no encontrado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Invalid Token"
+                }
+              }
+            }
+          }
+        }, 
+        "parameters": [
+          {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+    }
+      ]
+      }
+    }, 
+    "/api/user/{id_usuario}": {
+      "get": {
+        "summary": "Obtener usuario por id",
+        "parameters": [
+          {
+            "name": "id_usuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del usuario a obtener"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_usuario": 1,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "ducart@outlook.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuario no encontrado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/id_rol/{id_rol}": {
+      "get": {
+        "summary": "Obtener usuarios por id_rol",
+        "parameters": [
+          {
+            "name": "id_rol",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del rol para filtrar usuarios"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_usuario": 1,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "ducart@outlook.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 1
+                    },
+                    {
+                      "id_usuario": 9,
+                      "nombres": "Juan 1700545259028",
+                      "apellidos": "Gomez ds",
+                      "correo": "juan-josesd@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "31556795149",
+                      "id_rol": 1
+                    },
+                    {
+                      "id_usuario": 10,
+                      "nombres": "Andres Felipe",
+                      "apellidos": "Avila Rojas",
+                      "correo": "atec0793@gmail.com",
+                      "codPais": 57,
+                      "numeroCelular": "3118296930",
+                      "id_rol": 1
+                    },
+                    {
+                      "id_usuario": 15,
+                      "nombres": "Daniel Santiago d",
+                      "apellidos": "Cespedes Granados vg",
+                      "correo": "daniel-cespedesg@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "3155679567",
+                      "id_rol": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuarios no encontrados para el id_rol especificado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuarios no encontrados para el id_rol especificado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/user/nombres/{nombre}": {
+      "get": {
+        "summary": "Obtener usuario por nombre",
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Nombre del usuario que se desea buscar"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_usuario": 10,
+                      "nombres": "Andres Felipe",
+                      "apellidos": "Avila Rojas",
+                      "correo": "atec0793@gmail.com",
+                      "codPais": 57,
+                      "numeroCelular": "3118296930",
+                      "id_rol": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuario no encontrado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/user/id_usuario/{id_usuario}": {
+      "get": {
+        "summary": "Obtener usuario por ID",
+        "parameters": [
+          {
+            "name": "id_usuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del usuario a obtener"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_usuario": 1,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "ducart@outlook.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuario no encontrado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/user/apellidos/{apellidos}": {
+      "get": {
+        "summary": "Obtener usuarios por apellidos",
+        "parameters": [
+          {
+            "name": "apellidos",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Apellidos del usuario a buscar"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_usuario": 1,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "ducart@outlook.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 1
+                    },
+                    {
+                      "id_usuario": 2,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "dan333pro@gmail.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 2
+                    },
+                    {
+                      "id_usuario": 3,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "daniel-cespedes@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 3
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuarios no encontrados",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuarios no encontrados"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+     "/api/user/correo/{correo}": {
+      "get": {
+        "summary": "Obtener usuario por correo",
+        "parameters": [
+          {
+            "name": "correo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Correo del usuario a buscar"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_usuario": 2,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "dan333pro@gmail.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 2
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuario no encontrado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/user/codPais/{codPais}": {
+      "get": {
+        "summary": "Obtener usuarios por código de país",
+        "parameters": [
+          {
+            "name": "codPais",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Código de país"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_usuario": 1,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "ducart@outlook.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 1
+                    },
+                    {
+                      "id_usuario": 2,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "dan333pro@gmail.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 2
+                    },
+                    {
+                      "id_usuario": 3,
+                      "nombres": "Daniel Santiago",
+                      "apellidos": "Cespedes Granados",
+                      "correo": "daniel-cespedes@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "id_rol": 3
+                    },
+                    {
+                      "id_usuario": 6,
+                      "nombres": "Juan Jose",
+                      "apellidos": "Gomez Ruiz",
+                      "correo": "juan-jose@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "3155679569",
+                      "id_rol": 2
+                    },
+                    {
+                      "id_usuario": 7,
+                      "nombres": "Juan d",
+                      "apellidos": "Gomez d",
+                      "correo": "juan-josed@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "31556795649",
+                      "id_rol": 2
+                    },
+                    {
+                      "id_usuario": 9,
+                      "nombres": "Juan 1700545259028",
+                      "apellidos": "Gomez ds",
+                      "correo": "juan-josesd@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "31556795149",
+                      "id_rol": 1
+                    },
+                    {
+                      "id_usuario": 10,
+                      "nombres": "Andres Felipe",
+                      "apellidos": "Avila Rojas",
+                      "correo": "atec0793@gmail.com",
+                      "codPais": 57,
+                      "numeroCelular": "3118296930",
+                      "id_rol": 1
+                    },
+                    {
+                      "id_usuario": 12,
+                      "nombres": "Andres Felipea",
+                      "apellidos": "Avila Rojasa",
+                      "correo": "saga334@gmail.com",
+                      "codPais": 57,
+                      "numeroCelular": "3136205537",
+                      "id_rol": 3
+                    },
+                    {
+                      "id_usuario": 13,
+                      "nombres": "Daniela Gomez ",
+                      "apellidos": "Alvarado",
+                      "correo": "daniela334@gmail.com",
+                      "codPais": 57,
+                      "numeroCelular": "3214567891",
+                      "id_rol": 2
+                    },
+                    {
+                      "id_usuario": 14,
+                      "nombres": "Leopoldo Lopez ",
+                      "apellidos": "Ramirez",
+                      "correo": "leo-lopez@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "31756795149",
+                      "id_rol": 2
+                    },
+                    {
+                      "id_usuario": 15,
+                      "nombres": "Daniel Santiago d",
+                      "apellidos": "Cespedes Granados vg",
+                      "correo": "daniel-cespedesg@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "3155679567",
+                      "id_rol": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuarios no encontrados para el código de país dado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuarios no encontrados para el código de país dado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/user/numeroCelular/{numeroCelular}": {
+      "get": {
+        "summary": "Obtener usuario por número de celular",
+        "parameters": [
+          {
+            "name": "numeroCelular",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Número de celular"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_usuario": 9,
+                      "nombres": "Juan 1700545259028",
+                      "apellidos": "Gomez ds",
+                      "correo": "juan-josesd@upc.edu.co",
+                      "codPais": 57,
+                      "numeroCelular": "31556795149",
+                      "id_rol": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado para el número de celular dado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 404,
+                  "message": "Usuario no encontrado para el número de celular dado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "summary": "Iniciar sesión",
+        "requestBody": {
+          "description": "Credenciales de inicio de sesión",
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "correo": "ducart@outlook.com",
+                "userPassword": "Password2003"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Inicio de sesión exitoso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": {
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoxLCJ1c2VyUGFzc3dvcmQiOiIkMmIkMDUkM0JrbFU3UDZ1WTRCOTZFdVVuSFZBdVNMeEVmRi9kVVV2cVpzalZXcDFNWnhHcC9FVWZtdE8iLCJpYXQiOjE3MDA4ODgxNTF9.3KVj4X3yaQ9f2tQCgunjGx7Mj0PdMXoYMhqd7QOK03A",
+                    "id_rol": 1
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Credenciales incorrectas",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 401,
+                  "message": "Credenciales incorrectas"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/product_type/": {
+
+      "get": {
+        "summary": "Obtener tipos de productos",
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_tipo_producto": 1,
+                      "detalle": "Abarrotes"
+                    },
+                    {
+                      "id_tipo_producto": 2,
+                      "detalle": "Dulcería"
+                    },
+                    {
+                      "id_tipo_producto": 3,
+                      "detalle": "Aseo"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 400,
+                  "message": "Error de solicitud"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        } , 
+        "parameters": [
+          {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+    }
+      ]
+      }
+    }, 
+    "/api/product_type/{id_tipo_producto}": {
+      "get": {
+        "summary": "Obtener detalle de un tipo de producto por ID",
+        "parameters": [
+          {
+            "name": "id_tipo_producto",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del tipo de producto"
+          }, 
+          {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_tipo_producto": 1,
+                      "detalle": "Abarrotes"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 400,
+                  "message": "Error de solicitud"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        } 
+      }
+    }, 
+    "/api/product_type/detalle/{detalle}": {
+      "get": {
+        "summary": "Obtener detalle de un tipo de producto por nombre",
+        "parameters": [
+          {
+            "name": "detalle",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Nombre del tipo de producto"
+          }, {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_tipo_producto": 1,
+                      "detalle": "Abarrotes"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 400,
+                  "message": "Error de solicitud"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+     "/api/product_type/id_tipo_producto/{id_tipo_producto}": {
+      "get": {
+        "summary": "Obtener detalle de un tipo de producto por ID",
+        "parameters": [
+          {
+            "name": "id_tipo_producto",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del tipo de producto"
+          }, {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_tipo_producto": 2,
+                      "detalle": "Dulceria"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 400,
+                  "message": "Error de solicitud"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+     }, 
+     "/api/order_detail/": {
+      "get": {
+        "summary": "Obtener detalles de pedidos",
+        "parameters": [
+         {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_producto": 1,
+                      "id_pedido": 3,
+                      "cantidad": 2,
+                      "total": "5600"
+                    },
+                    {
+                      "id_producto": 2,
+                      "id_pedido": 3,
+                      "cantidad": 1,
+                      "total": "4800"
+                    },
+                    {
+                      "id_producto": 4,
+                      "id_pedido": 3,
+                      "cantidad": 3,
+                      "total": "8400"
+                    },
+                    {
+                      "id_producto": 5,
+                      "id_pedido": 3,
+                      "cantidad": 2,
+                      "total": "1100"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 400,
+                  "message": "Error de solicitud"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "message": "Error de servidor"
+                }
+              }
+            }
+          }
+        }
+      }, 
+      "post": {
+        "summary": "Insertar detalles de un pedido",
+         "parameters": [
+         {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "id_producto": 1,
+                "id_pedido": 3,
+                "cantidad": 2,
+                "total": "8000",
+                "id_usuario": 14,
+                "accion": "insert-compose"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado exitosamente",
+            "content": {
+              "application/json": {
+                "example": {
+                  "fieldCount": 0,
+                  "affectedRows": 1,
+                  "insertId": 123,
+                  "info": "",
+                  "serverStatus": 2,
+                  "warningStatus": 0,
+                  "changedRows": 0
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Bad Request"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "No se encontró el servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/order_detail/{id_producto}/{id_pedido}": {
+      "get": {
+        "summary": "Obtener detalles de un pedido por id producto y id pedido",
+        "parameters": [
+          {
+            "name": "id_producto",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del producto"
+          },
+          {
+            "name": "id_pedido",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del pedido"
+          }, 
+          {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_producto": 1,
+                      "id_pedido": 3,
+                      "cantidad": 2,
+                      "total": "5600"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Not Found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "No se encontró el servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/order_detail/query/id_pedido/{id_pedido}": {
+      "get": {
+        "summary": "Obtener detalles de un pedido por ID de pedido",
+        "parameters": [
+          {
+            "name": "id_pedido",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del pedido"
+          }, {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_producto": 1,
+                      "id_pedido": 3,
+                      "cantidad": 2,
+                      "total": "5600"
+                    },
+                    {
+                      "id_producto": 2,
+                      "id_pedido": 3,
+                      "cantidad": 1,
+                      "total": "4800"
+                    },
+                    {
+                      "id_producto": 4,
+                      "id_pedido": 3,
+                      "cantidad": 3,
+                      "total": "8400"
+                    },
+                    {
+                      "id_producto": 5,
+                      "id_pedido": 3,
+                      "cantidad": 2,
+                      "total": "1100"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Not Found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "No se encontró el servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/order_detail/query/id_producto/{id_producto}": {
+      "get": {
+        "summary": "Obtener detalles de un pedido por ID de producto",
+        "parameters": [
+          {
+            "name": "id_producto",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del producto"
+          },{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          } 
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_producto": 2,
+                      "id_pedido": 3,
+                      "cantidad": 1,
+                      "total": "4800"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Not Found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "No se encontró el servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/order_detail/query/cantidad/{cantidad}": {
+      "get": {
+        "summary": "Obtener detalles de un pedido por cantidad",
+        "parameters": [
+          {
+            "name": "cantidad",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Cantidad de productos en el pedido"
+          }, 
+          {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          } 
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_producto": 4,
+                      "id_pedido": 3,
+                      "cantidad": 3,
+                      "total": "8400"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de solicitud",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Not Found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "No se encontró el servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, 
+    "/api/client/": {
+      "get": {
+        "summary": "Obtener lista de clientes",
+        "parameters": [
+          {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "Token de autorización"
+          } 
+        ],
+        "responses": {
+          "200": {
+            "description": "Éxito",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": false,
+                  "status": 200,
+                  "body": [
+                    {
+                      "id_cliente": 1,
+                      "nombres": "Camilo Andres",
+                      "apellidos": "Ordoñez Guzman",
+                      "correo": "camiloguzman@outlook.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155679568",
+                      "direccion": "Calle 24 #5-55, Madrid, Cundinamerca",
+                      "id_ruta": 1
+                    },
+                    {
+                      "id_cliente": 2,
+                      "nombres": "Luz Marina",
+                      "apellidos": "Diaz Serran",
+                      "correo": "luzserran@outlook.com",
+                      "codPais": 57,
+                      "numeroCelular": "3155689425",
+                      "direccion": "Calle 14 #5-10, Madrid, Cundinamerca",
+                      "id_ruta": 1
+                    },
+                    // ... (otros clientes)
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error de servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "status": 500,
+                  "body": {
+                    "error": "No se encontró el servidor"
+                  }
                 }
               }
             }
@@ -69,81 +1744,181 @@
         }
       }
     }
-  },
+},
   "components": {
     "schemas": {
-      "User": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "id_usuario": {
+            "type": "integer"
+          },
+          "nombres": {
+            "type": "string"
+          },
+          "apellidos": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          }, 
+          "userPassword": {
+            "type": "string"
+          }, 
+          "codPais": {
+            "type": "integer"
+          },
+          "numeroCelular": {
+            "type": "string"
+          }, 
+          "id_rol": {
+            "type": "integer"
+          }
+        }
+      }, 
+      "Producto": {
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "example": "id-2001"
+            "type": "integer"
           },
-          "username": {
-            "type": "string",
-            "example": "DagoGres"
+          "nombre": {
+            "type": "string"
           },
-          "password": {
-            "type": "string",
-            "example": "12345"
+          "descripcion": {
+            "type": "string"
+          },
+          "precio": {
+            "type": "string"
+          }, 
+          "empresa": {
+            "type": "string"
+          }, 
+          "id_tipo_producto": {
+            "type": "integer"
+          },
+          "id_usuario": {
+            "type": "integer"
+          }, 
+          "imagen": {
+            "type": "string"
           }
-        },
-        "xml": {
-          "name": "user"
         }
-      },
-      "ApiResponse": {
+      }, 
+      "Tipo_Producto": {
         "type": "object",
         "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
+          "id": {
+            "type": "integer"
           },
-          "type": {
+          "detalle": {
             "type": "string"
           },
-          "message": {
-            "type": "string"
-          }
-        },
-        "xml": {
-          "name": "##default"
-        }
-      }
-    },
-    "requestBodies": {
-      "UserArray": {
-        "description": "List of user object",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/User"
-              }
-            }
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "petstore_auth": {
-        "type": "oauth2",
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "https://petstore3.swagger.io/oauth/authorize",
-            "scopes": {
-              "write:pets": "modify pets in your account",
-              "read:pets": "read your pets"
-            }
+          "id_usuario": {
+            "type": "integer"
           }
         }
       },
-      "api_key": {
-        "type": "apiKey",
-        "name": "api_key",
-        "in": "header"
+      "Ruta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nombre_ruta": {
+            "type": "string"
+          },
+          "id_vendedor": {
+            "type": "integer"
+          }, 
+          "id_entregador": {
+            "type": "integer"
+          }
+        }
+      }, 
+      "Pedido": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "notas": {
+            "type": "string"
+          },
+          "id_estado": {
+            "type": "integer"
+          }, 
+          "id_cliente": {
+            "type": "integer"
+          },
+           "fecha": {
+            "type": "string"
+          },
+           "total": {
+            "type": "string"
+          }, 
+          "id_usuario": {
+            "type": "integer"
+          }
+
+        }
+      }, 
+      "Cliente": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nombres": {
+            "type": "string"
+          },
+          "apellidos": {
+            "type": "string"
+          }, 
+          "correo": {
+            "type": "string"
+          },
+           "codPais": {
+            "type": "integer"
+          },
+           "numeroCelular": {
+            "type": "string"
+          }, 
+          "direccion": {
+            "type": "string"
+          }, 
+          "id_ruta": {
+            "type": "integer"
+          }, 
+          "id_usuario": {
+            "type": "integer"
+          }
+        }
+      }, 
+      "DetallePedido": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "id_producto": {
+            "type": "integer"
+          },
+          "id_pedido": {
+            "type": "integer"
+          }, 
+          "cantidad": {
+            "type": "integer"
+          },
+           "total": {
+            "type": "string"
+          },
+           "id_usuario": {
+            "type": "integer"
+          }
+        }
       }
+
     }
   }
 }
